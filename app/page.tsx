@@ -1,4 +1,12 @@
+"use client";
+
+import { useEffect } from "react";
+
 export default function Home() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <main className="min-h-screen bg-[#F7F1E3] text-[#243028]">
 
@@ -12,24 +20,15 @@ export default function Home() {
           </div>
 
           <div className="hidden items-center gap-8 text-sm font-medium md:flex">
-            <a
-              href="#courses"
-              className="transition hover:text-[#B85C38]"
-            >
+            <a href="#courses" className="transition hover:text-[#B85C38]">
               Courses
             </a>
 
-            <a
-              href="#how-it-works"
-              className="transition hover:text-[#B85C38]"
-            >
+            <a href="#how-it-works" className="transition hover:text-[#B85C38]">
               How it works
             </a>
 
-            <a
-              href="#about"
-              className="transition hover:text-[#B85C38]"
-            >
+            <a href="#about" className="transition hover:text-[#B85C38]">
               About Michele
             </a>
           </div>
@@ -40,7 +39,6 @@ export default function Home() {
           >
             Start Learning
           </a>
-
         </nav>
       </header>
 
@@ -164,6 +162,7 @@ export default function Home() {
             {/* GRADIENT */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#243028]/80 via-[#243028]/30 to-transparent" />
 
+
             {/* TEXT */}
             <div className="relative flex min-h-[520px] items-end md:min-h-[600px]">
 
@@ -223,7 +222,6 @@ export default function Home() {
           {/* FOUR MAIN COURSES */}
           <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
 
-            {/* BREAD DOUGH */}
             <CourseCard
               number="01"
               title="Bread Dough"
@@ -235,8 +233,6 @@ export default function Home() {
               alt="Traditional Italian bread"
             />
 
-
-            {/* FRESH PASTA */}
             <CourseCard
               number="02"
               title="Fresh Pasta"
@@ -248,8 +244,6 @@ export default function Home() {
               alt="Fresh homemade Italian pasta"
             />
 
-
-            {/* PIZZA DOUGH */}
             <CourseCard
               number="03"
               title="Pizza Dough"
@@ -261,8 +255,6 @@ export default function Home() {
               alt="Authentic Italian pizza"
             />
 
-
-            {/* TORTA AL TESTO */}
             <CourseCard
               number="04"
               title="Torta al Testo"
@@ -351,7 +343,6 @@ export default function Home() {
           {/* THREE NEW COURSES */}
           <div className="mt-14 grid gap-5 md:grid-cols-3">
 
-            {/* SQUID RAGÙ */}
             <CourseCard
               number="01"
               title="Squid Ragù"
@@ -363,8 +354,6 @@ export default function Home() {
               alt="Italian seafood pasta"
             />
 
-
-            {/* BOLOGNESE */}
             <CourseCard
               number="02"
               title="Classic Bolognese Ragù"
@@ -376,8 +365,6 @@ export default function Home() {
               alt="Classic Italian Bolognese pasta"
             />
 
-
-            {/* LASAGNA */}
             <CourseCard
               number="03"
               title="Lasagna"
@@ -459,11 +446,9 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-2 lg:items-center">
 
           <div className="flex aspect-square items-center justify-center rounded-[2rem] bg-[#E6D5B8]">
-
             <span className="text-8xl">
               👨‍🍳
             </span>
-
           </div>
 
 
