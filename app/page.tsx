@@ -5,6 +5,25 @@ import { useEffect } from "react";
 export default function Home() {
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    const elements = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+      }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -13,12 +32,14 @@ export default function Home() {
       {/* =========================
           NAVBAR
       ========================== */}
+
       <header className="fixed top-0 z-50 w-full border-b border-[#17202A]/10 bg-[#FFF9F0]/90 backdrop-blur-xl">
+
         <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10">
 
           <a
             href="#top"
-            className="text-xl font-bold tracking-tight"
+            className="text-xl font-bold tracking-tight transition hover:scale-[1.02]"
           >
             Michele&apos;s{" "}
             <span className="text-[#C63D2F]">
@@ -30,21 +51,21 @@ export default function Home() {
 
             <a
               href="#courses"
-              className="transition hover:text-[#C63D2F]"
+              className="nav-link"
             >
               Courses
             </a>
 
             <a
               href="#how-it-works"
-              className="transition hover:text-[#C63D2F]"
+              className="nav-link"
             >
               How it works
             </a>
 
             <a
               href="#about"
-              className="transition hover:text-[#C63D2F]"
+              className="nav-link"
             >
               About Michele
             </a>
@@ -53,68 +74,76 @@ export default function Home() {
 
           <a
             href="#courses"
-            className="rounded-full bg-[#C63D2F] px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#A92F25]"
+            className="button-animate rounded-full bg-[#C63D2F] px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#A92F25]"
           >
             Start Learning
           </a>
 
         </nav>
+
       </header>
 
 
       {/* =========================
           HERO
       ========================== */}
+
       <section
         id="top"
         className="relative flex min-h-screen items-center overflow-hidden pt-20"
       >
 
-        {/* Decorative background */}
         <div className="pointer-events-none absolute -right-40 top-20 h-96 w-96 rounded-full bg-[#F2E5D2] blur-3xl" />
 
         <div className="mx-auto grid w-full max-w-7xl items-center gap-14 px-6 py-16 lg:grid-cols-2 lg:px-10 lg:py-24">
 
           {/* HERO TEXT */}
+
           <div className="relative z-10 max-w-xl">
 
-            <div className="mb-6 inline-flex items-center rounded-full border border-[#C63D2F]/20 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#C63D2F]">
+            <div className="hero-animate inline-flex items-center rounded-full border border-[#C63D2F]/20 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#C63D2F]">
               Authentic Italian Cooking
             </div>
 
-            <h1 className="text-5xl font-bold leading-[0.92] tracking-[-0.04em] sm:text-6xl lg:text-8xl">
+            <h1 className="hero-animate hero-delay-1 mt-6 text-5xl font-bold leading-[0.92] tracking-[-0.04em] sm:text-6xl lg:text-8xl">
+
               The art of
               <br />
+
               <span className="text-[#C63D2F]">
                 Italian cooking.
               </span>
+
             </h1>
 
-            <p className="mt-8 max-w-lg text-lg leading-8 text-[#243447]/75">
+            <p className="hero-animate hero-delay-2 mt-8 max-w-lg text-lg leading-8 text-[#243447]/75">
+
               Discover the art of authentic Italian homemade cooking,
               from traditional doughs and fresh pasta to timeless
               recipes made with passion.
+
             </p>
 
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <div className="hero-animate hero-delay-3 mt-9 flex flex-col gap-3 sm:flex-row">
 
               <a
                 href="#courses"
-                className="rounded-full bg-[#17202A] px-7 py-4 text-center font-semibold text-white transition hover:-translate-y-1 hover:bg-[#243447]"
+                className="button-animate group rounded-full bg-[#17202A] px-7 py-4 text-center font-semibold text-white hover:bg-[#243447]"
               >
-                Explore Courses →
+                Explore Courses{" "}
+                <span className="arrow-move">→</span>
               </a>
 
               <a
                 href="#about"
-                className="rounded-full border border-[#17202A]/20 bg-white px-7 py-4 text-center font-semibold transition hover:border-[#C63D2F]/40 hover:text-[#C63D2F]"
+                className="button-animate rounded-full border border-[#17202A]/20 bg-white px-7 py-4 text-center font-semibold hover:border-[#C63D2F]/40 hover:text-[#C63D2F]"
               >
                 Meet Michele
               </a>
 
             </div>
 
-            <div className="mt-10 flex flex-wrap gap-x-7 gap-y-3 text-sm text-[#243447]/70">
+            <div className="hero-animate hero-delay-4 mt-10 flex flex-wrap gap-x-7 gap-y-3 text-sm text-[#243447]/70">
 
               <span>
                 ✓ Traditional techniques
@@ -134,22 +163,23 @@ export default function Home() {
 
 
           {/* HERO IMAGE */}
-          <div className="relative">
 
-            <div className="group relative aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-[#F2E5D2] shadow-2xl">
+          <div className="hero-animate hero-delay-2 relative">
+
+            <div className="image-reveal group relative aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-[#F2E5D2] shadow-2xl">
 
               <img
                 src="/michele2.jpg"
                 alt="Michele preparing Italian homemade cooking"
-                className="h-full w-full object-cover object-center transition duration-700 group-hover:scale-105"
+                className="h-full w-full object-cover object-center"
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-[#17202A]/30 via-transparent to-transparent" />
 
             </div>
 
-            {/* Floating card */}
-            <div className="absolute -bottom-6 -left-6 rounded-2xl border border-black/5 bg-white px-6 py-5 shadow-xl">
+
+            <div className="floating-card absolute -bottom-6 -left-6 rounded-2xl border border-black/5 bg-white px-6 py-5 shadow-xl">
 
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#C63D2F]">
                 From Italy
@@ -171,16 +201,17 @@ export default function Home() {
       {/* =========================
           PRESENTATION
       ========================== */}
+
       <section className="bg-white px-6 py-24 lg:px-10">
 
-        <div className="mx-auto max-w-5xl">
+        <div className="reveal mx-auto max-w-5xl">
 
-          <div className="group relative min-h-[520px] overflow-hidden rounded-[2.5rem] shadow-2xl md:min-h-[600px]">
+          <div className="presentation-container group relative min-h-[520px] overflow-hidden rounded-[2.5rem] shadow-2xl md:min-h-[600px]">
 
             <img
               src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1800&q=90"
               alt="Italian homemade cooking"
-              className="absolute inset-0 h-full w-full object-cover object-center transition duration-700 group-hover:scale-105"
+              className="presentation-image absolute inset-0 h-full w-full object-cover object-center"
             />
 
             <div className="absolute inset-0 bg-[#17202A]/60" />
@@ -220,6 +251,7 @@ export default function Home() {
       {/* =========================
           COURSES
       ========================== */}
+
       <section
         id="courses"
         className="bg-[#FFF9F0] px-6 py-24 lg:px-10"
@@ -227,18 +259,21 @@ export default function Home() {
 
         <div className="mx-auto max-w-7xl">
 
-          <div className="max-w-2xl">
+          <div className="reveal max-w-2xl">
 
             <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#C63D2F]">
               Choose your journey
             </p>
 
             <h2 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
+
               Learn the craft.
               <br />
+
               <span className="text-[#C63D2F]">
                 Master the tradition.
               </span>
+
             </h2>
 
             <p className="mt-5 max-w-xl text-lg leading-8 text-[#243447]/70">
@@ -249,7 +284,6 @@ export default function Home() {
           </div>
 
 
-          {/* MAIN COURSES */}
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
 
             <CourseCard
@@ -299,8 +333,9 @@ export default function Home() {
           </div>
 
 
-          {/* COMPLETE COLLECTION */}
-          <div className="mt-8 overflow-hidden rounded-[2.5rem] bg-[#17202A] p-8 text-white md:p-12">
+          {/* COLLECTION */}
+
+          <div className="reveal mt-8 overflow-hidden rounded-[2.5rem] bg-[#17202A] p-8 text-white md:p-12">
 
             <div className="flex flex-col justify-between gap-8 md:flex-row md:items-center">
 
@@ -321,15 +356,17 @@ export default function Home() {
 
               </div>
 
-
               <div className="flex items-center gap-6">
 
                 <span className="text-4xl font-bold">
                   €69
                 </span>
 
-                <button className="rounded-full bg-[#C63D2F] px-6 py-4 font-semibold text-white transition hover:scale-105 hover:bg-[#A92F25]">
-                  Get the Collection →
+                <button className="button-animate group rounded-full bg-[#C63D2F] px-6 py-4 font-semibold text-white hover:bg-[#A92F25]">
+
+                  Get the Collection{" "}
+                  <span className="arrow-move">→</span>
+
                 </button>
 
               </div>
@@ -346,22 +383,26 @@ export default function Home() {
       {/* =========================
           ITALIAN CLASSICS
       ========================== */}
+
       <section className="bg-[#F2E5D2] px-6 py-24 lg:px-10">
 
         <div className="mx-auto max-w-7xl">
 
-          <div className="max-w-2xl">
+          <div className="reveal max-w-2xl">
 
             <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#C63D2F]">
               Italian Classics
             </p>
 
             <h2 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
+
               From the sauce
               <br />
+
               <span className="text-[#C63D2F]">
                 to the table.
               </span>
+
             </h2>
 
             <p className="mt-5 max-w-xl text-lg leading-8 text-[#243447]/70">
@@ -372,7 +413,6 @@ export default function Home() {
           </div>
 
 
-          {/* CLASSICS */}
           <div className="mt-14 grid gap-6 md:grid-cols-3">
 
             <CourseCard
@@ -418,6 +458,7 @@ export default function Home() {
       {/* =========================
           HOW IT WORKS
       ========================== */}
+
       <section
         id="how-it-works"
         className="bg-white px-6 py-24 lg:px-10"
@@ -425,18 +466,21 @@ export default function Home() {
 
         <div className="mx-auto max-w-7xl">
 
-          <div className="text-center">
+          <div className="reveal text-center">
 
             <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#C63D2F]">
               Simple by design
             </p>
 
             <h2 className="mx-auto mt-4 max-w-4xl text-4xl font-bold sm:text-5xl">
+
               Your kitchen. Your pace.
               <br />
+
               <span className="text-[#C63D2F]">
                 Your Italian table.
               </span>
+
             </h2>
 
           </div>
@@ -478,6 +522,7 @@ export default function Home() {
       {/* =========================
           ABOUT MICHELE
       ========================== */}
+
       <section
         id="about"
         className="bg-[#FFF9F0] px-6 py-24 lg:px-10"
@@ -485,13 +530,12 @@ export default function Home() {
 
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-2 lg:items-center">
 
-          {/* MICHELE PHOTO */}
-          <div className="group relative aspect-square overflow-hidden rounded-[2.5rem] bg-[#F2E5D2] shadow-2xl">
+          <div className="reveal image-reveal group relative aspect-square overflow-hidden rounded-[2.5rem] bg-[#F2E5D2] shadow-2xl">
 
             <img
               src="/michele2.jpg"
               alt="Michele preparing Italian homemade cooking"
-              className="h-full w-full object-cover object-center transition duration-700 group-hover:scale-105"
+              className="h-full w-full object-cover object-center"
             />
 
             <div className="absolute inset-0 bg-gradient-to-t from-[#17202A]/25 to-transparent" />
@@ -499,30 +543,37 @@ export default function Home() {
           </div>
 
 
-          {/* ABOUT TEXT */}
-          <div>
+          <div className="reveal">
 
             <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#C63D2F]">
               Meet Michele
             </p>
 
             <h2 className="mt-4 text-4xl font-bold leading-tight sm:text-5xl">
+
               Italian cooking is more than food.
               <br />
+
               <span className="text-[#C63D2F]">
                 It&apos;s a way of life.
               </span>
+
             </h2>
 
             <p className="mt-7 text-lg leading-8 text-[#243447]/70">
+
               Michele&apos;s Pasta Lab brings authentic Italian cooking
               techniques directly to your kitchen. No complicated equipment,
               no unnecessary rules — just good ingredients, traditional
               techniques and the pleasure of making something yourself.
+
             </p>
 
-            <button className="mt-8 rounded-full bg-[#17202A] px-7 py-4 font-semibold text-white transition hover:-translate-y-1 hover:bg-[#243447]">
-              Discover Michele →
+            <button className="button-animate group mt-8 rounded-full bg-[#17202A] px-7 py-4 font-semibold text-white hover:bg-[#243447]">
+
+              Discover Michele{" "}
+              <span className="arrow-move">→</span>
+
             </button>
 
           </div>
@@ -535,25 +586,31 @@ export default function Home() {
       {/* =========================
           CTA
       ========================== */}
+
       <section className="relative overflow-hidden bg-[#C63D2F] px-6 py-24 text-center text-white">
 
         <div className="pointer-events-none absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
 
-        <div className="relative">
+        <div className="reveal relative">
 
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-white/70">
             Ready to start?
           </p>
 
           <h2 className="mx-auto mt-4 max-w-3xl text-5xl font-bold tracking-tight sm:text-6xl">
+
             Bring the taste of Italy into your kitchen.
+
           </h2>
 
           <a
             href="#courses"
-            className="mt-9 inline-block rounded-full bg-white px-8 py-4 font-semibold text-[#17202A] transition hover:scale-105"
+            className="cta-button group mt-9 inline-block rounded-full bg-white px-8 py-4 font-semibold text-[#17202A]"
           >
-            Explore the Courses →
+
+            Explore the Courses{" "}
+            <span className="arrow-move">→</span>
+
           </a>
 
         </div>
@@ -564,6 +621,7 @@ export default function Home() {
       {/* =========================
           FOOTER
       ========================== */}
+
       <footer className="bg-[#17202A] px-6 py-12 text-white lg:px-10">
 
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 md:flex-row md:items-center">
@@ -571,10 +629,13 @@ export default function Home() {
           <div>
 
             <p className="text-xl font-bold">
+
               Michele&apos;s{" "}
+
               <span className="text-[#C63D2F]">
                 Pasta Lab
               </span>
+
             </p>
 
             <p className="mt-2 text-sm text-white/50">
@@ -620,21 +681,19 @@ function CourseCard({
   alt: string;
 }) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-[2rem] border border-[#17202A]/10 bg-white transition duration-300 hover:-translate-y-2 hover:shadow-2xl">
+    <article className="reveal course-card group flex h-full flex-col overflow-hidden rounded-[2rem] border border-[#17202A]/10 bg-white">
 
-      {/* IMAGE */}
-      <div className="h-[190px] w-full overflow-hidden">
+      <div className="image-reveal h-[190px] w-full">
 
         <img
           src={image}
           alt={alt}
-          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+          className="h-full w-full object-cover"
         />
 
       </div>
 
 
-      {/* CONTENT */}
       <div className="flex flex-1 flex-col p-6">
 
         <div className="flex items-center justify-between">
@@ -663,7 +722,6 @@ function CourseCard({
         </div>
 
 
-        {/* PRICE */}
         <div className="mt-auto border-t border-[#17202A]/10 pt-5">
 
           <div className="flex items-end justify-between gap-3">
@@ -681,8 +739,11 @@ function CourseCard({
             </div>
 
 
-            <button className="rounded-full bg-[#C63D2F] px-5 py-3 text-sm font-semibold text-white transition hover:scale-105 hover:bg-[#A92F25]">
-              View Course →
+            <button className="button-animate group rounded-full bg-[#C63D2F] px-5 py-3 text-sm font-semibold text-white hover:bg-[#A92F25]">
+
+              View Course{" "}
+              <span className="arrow-move">→</span>
+
             </button>
 
           </div>
@@ -710,9 +771,9 @@ function Step({
   text: string;
 }) {
   return (
-    <div className="group">
+    <div className="reveal group">
 
-      <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#C63D2F] text-sm font-bold text-white transition group-hover:scale-110">
+      <span className="step-number inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#C63D2F] text-sm font-bold text-white">
         {number}
       </span>
 
