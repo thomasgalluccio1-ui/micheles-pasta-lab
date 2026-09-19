@@ -10,27 +10,42 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#F7F1E3] text-[#243028]">
 
-      {/* NAVBAR */}
+      {/* =========================
+          NAVBAR
+      ========================== */}
       <header className="fixed top-0 z-50 w-full border-b border-black/5 bg-[#F7F1E3]/90 backdrop-blur-md">
         <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10">
 
           <div className="text-xl font-semibold tracking-tight">
             Michele&apos;s{" "}
-            <span className="text-[#B85C38]">Pasta Lab</span>
+            <span className="text-[#B85C38]">
+              Pasta Lab
+            </span>
           </div>
 
           <div className="hidden items-center gap-8 text-sm font-medium md:flex">
-            <a href="#courses" className="transition hover:text-[#B85C38]">
+
+            <a
+              href="#courses"
+              className="transition hover:text-[#B85C38]"
+            >
               Courses
             </a>
 
-            <a href="#how-it-works" className="transition hover:text-[#B85C38]">
+            <a
+              href="#how-it-works"
+              className="transition hover:text-[#B85C38]"
+            >
               How it works
             </a>
 
-            <a href="#about" className="transition hover:text-[#B85C38]">
+            <a
+              href="#about"
+              className="transition hover:text-[#B85C38]"
+            >
               About Michele
             </a>
+
           </div>
 
           <a
@@ -39,15 +54,19 @@ export default function Home() {
           >
             Start Learning
           </a>
+
         </nav>
       </header>
 
 
-      {/* HERO */}
+      {/* =========================
+          HERO
+      ========================== */}
       <section className="relative flex min-h-screen items-center overflow-hidden pt-20">
 
         <div className="mx-auto grid w-full max-w-7xl items-center gap-12 px-6 py-16 lg:grid-cols-2 lg:px-10 lg:py-24">
 
+          {/* HERO TEXT */}
           <div className="max-w-xl">
 
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.25em] text-[#B85C38]">
@@ -87,9 +106,19 @@ export default function Home() {
             </div>
 
             <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm text-[#657066]">
-              <span>✓ Traditional Italian techniques</span>
-              <span>✓ Step-by-step lessons</span>
-              <span>✓ Learn from your own kitchen</span>
+
+              <span>
+                ✓ Traditional Italian techniques
+              </span>
+
+              <span>
+                ✓ Step-by-step lessons
+              </span>
+
+              <span>
+                ✓ Learn from your own kitchen
+              </span>
+
             </div>
 
           </div>
@@ -98,27 +127,13 @@ export default function Home() {
           {/* HERO IMAGE */}
           <div className="relative">
 
-            <div className="aspect-[4/5] overflow-hidden rounded-[2rem] bg-[#E6D5B8] shadow-2xl">
+            <div className="group aspect-[4/5] overflow-hidden rounded-[2rem] bg-[#E6D5B8] shadow-2xl">
 
-              <div className="flex h-full items-center justify-center p-10 text-center">
-
-                <div>
-
-                  <div className="mb-4 text-7xl">
-                    👨‍🍳
-                  </div>
-
-                  <p className="text-lg font-medium text-[#243028]">
-                    Italian cooking, made at home
-                  </p>
-
-                  <p className="mt-2 text-sm text-[#657066]">
-                    Your hero image / video goes here
-                  </p>
-
-                </div>
-
-              </div>
+              <img
+                src="/michele2.jpg"
+                alt="Michele preparing Italian homemade cooking"
+                className="h-full w-full object-cover object-center transition duration-700 group-hover:scale-105"
+              />
 
             </div>
 
@@ -142,28 +157,25 @@ export default function Home() {
       </section>
 
 
-      {/* PRESENTATION - IMAGE WITH TEXT OVERLAY */}
+      {/* =========================
+          PRESENTATION
+      ========================== */}
       <section className="bg-white px-6 py-20 lg:px-10">
 
         <div className="mx-auto max-w-5xl">
 
           <div className="group relative min-h-[520px] overflow-hidden rounded-[2rem] shadow-2xl md:min-h-[600px]">
 
-            {/* BACKGROUND IMAGE */}
             <img
               src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1800&q=90"
               alt="Italian homemade cooking"
               className="absolute inset-0 h-full w-full object-cover object-center transition duration-700 group-hover:scale-105"
             />
 
-            {/* DARK OVERLAY */}
             <div className="absolute inset-0 bg-[#243028]/55" />
 
-            {/* GRADIENT */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#243028]/80 via-[#243028]/30 to-transparent" />
 
-
-            {/* TEXT */}
             <div className="relative flex min-h-[520px] items-end md:min-h-[600px]">
 
               <div className="w-full max-w-4xl p-8 text-white md:p-14 lg:p-16">
@@ -194,7 +206,9 @@ export default function Home() {
       </section>
 
 
-      {/* COURSES */}
+      {/* =========================
+          COURSES
+      ========================== */}
       <section
         id="courses"
         className="bg-white px-6 py-24 lg:px-10"
@@ -219,7 +233,7 @@ export default function Home() {
           </div>
 
 
-          {/* FOUR MAIN COURSES */}
+          {/* MAIN COURSES */}
           <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
 
             <CourseCard
@@ -313,7 +327,9 @@ export default function Home() {
       </section>
 
 
-      {/* ITALIAN CLASSICS */}
+      {/* =========================
+          ITALIAN CLASSICS
+      ========================== */}
       <section className="bg-[#F7F1E3] px-6 py-24 lg:px-10">
 
         <div className="mx-auto max-w-7xl">
@@ -340,7 +356,6 @@ export default function Home() {
           </div>
 
 
-          {/* THREE NEW COURSES */}
           <div className="mt-14 grid gap-5 md:grid-cols-3">
 
             <CourseCard
@@ -383,7 +398,9 @@ export default function Home() {
       </section>
 
 
-      {/* HOW IT WORKS */}
+      {/* =========================
+          HOW IT WORKS
+      ========================== */}
       <section
         id="how-it-works"
         className="bg-white px-6 py-24 lg:px-10"
@@ -437,7 +454,9 @@ export default function Home() {
       </section>
 
 
-      {/* ABOUT */}
+      {/* =========================
+          ABOUT MICHELE
+      ========================== */}
       <section
         id="about"
         className="bg-[#F7F1E3] px-6 py-24 lg:px-10"
@@ -445,13 +464,19 @@ export default function Home() {
 
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-2 lg:items-center">
 
-          <div className="flex aspect-square items-center justify-center rounded-[2rem] bg-[#E6D5B8]">
-            <span className="text-8xl">
-              👨‍🍳
-            </span>
+          {/* MICHELE PHOTO */}
+          <div className="group aspect-square overflow-hidden rounded-[2rem] bg-[#E6D5B8] shadow-xl">
+
+            <img
+              src="/michele.jpg"
+              alt="Michele preparing Italian homemade cooking"
+              className="h-full w-full object-cover object-center transition duration-700 group-hover:scale-105"
+            />
+
           </div>
 
 
+          {/* ABOUT TEXT */}
           <div>
 
             <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#B85C38]">
@@ -484,7 +509,9 @@ export default function Home() {
       </section>
 
 
-      {/* CTA */}
+      {/* =========================
+          CTA
+      ========================== */}
       <section className="bg-[#B85C38] px-6 py-24 text-center text-white">
 
         <p className="text-sm font-semibold uppercase tracking-[0.25em] text-white/70">
@@ -505,7 +532,9 @@ export default function Home() {
       </section>
 
 
-      {/* FOOTER */}
+      {/* =========================
+          FOOTER
+      ========================== */}
       <footer className="bg-[#243028] px-6 py-12 text-white lg:px-10">
 
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 md:flex-row md:items-center">
@@ -538,7 +567,9 @@ export default function Home() {
 }
 
 
-/* COURSE CARD */
+/* =========================
+   COURSE CARD
+========================= */
 
 function CourseCard({
   number,
@@ -636,7 +667,9 @@ function CourseCard({
 }
 
 
-/* STEP */
+/* =========================
+   STEP
+========================= */
 
 function Step({
   number,
